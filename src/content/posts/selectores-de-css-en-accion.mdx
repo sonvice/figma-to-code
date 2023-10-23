@@ -1,0 +1,55 @@
+---
+author: monica-geller
+categories: Category
+tags: [diseño, desarrollo]
+date: 10/19/2023
+featured: false
+image: ./images/chandler.png
+avatar: ./images/monica-geller.png
+title: Selectores De Css En Acción
+---
+
+import { Prism } from "@astrojs/prism";
+
+Una de las principales ventajas de CSS es su capacidad para aplicar fácilmente un conjunto de estilos a todos los elementos del mismo tipo. ¿No estás impresionado? Considera esto: al editar una sola línea de CSS, puedes cambiar los colores de todos tus encabezados. ¿No te gusta el azul que estás usando? Cambia esa única línea de código y todos pueden ser morados, amarillos, marrones o cualquier otro color que desees. Esta capacidad te permite, como autor, centrarte en el diseño y la experiencia del usuario en lugar de realizar tediosas operaciones de búsqueda y reemplazo. La próxima vez que estés en una reunión y alguien quiera ver encabezados con un tono de verde diferente, simplemente edita tu estilo y presiona Recargar. ¡Voilà! Los resultados se logran en segundos y están ahí para que todos los vean.
+
+## Reglas Básicas de Estilo
+
+Como se mencionó, una característica central de CSS es su capacidad para aplicar ciertas reglas a un conjunto completo de tipos de elementos en un documento. Por ejemplo, digamos que deseas que el texto de todos los elementos `<h2>` aparezca en gris. Antes de tener CSS, tendrías que hacerlo insertando etiquetas `<font color="gray">...</font>` dentro de todos tus elementos `<h2>`. Aplicar estilos en línea usando el atributo style, lo cual también es una mala práctica, requeriría que incluyeras style="color: gray;" en todos tus elementos `<h2>`, como esto:
+
+<Prism
+lang="markup"
+code={`<h2 style="color: gray;">Este es un texto de h2</h2>`}
+/>
+Este proceso sería tedioso si tu documento contiene muchos elementos `<h2>`. Además, si más tarde decides que quieres que todos esos `<h2>` sean verdes en lugar de grises, tendrías que comenzar nuevamente con el etiquetado manual. (Sí, así solía hacerse realmente).
+
+CSS te permite crear reglas que son simples de cambiar, editar y aplicar a todos los elementos de texto que defines (la siguiente sección explica cómo funcionan estas reglas). Por ejemplo, puedes escribir esta regla una vez para hacer que todos tus elementos `<h2>` sean grises:
+
+<Prism lang="css" code={`h2 {color: gray;}`} />
+
+De esta manera, logras resultados uniformes en todo tu documento y puedes realizar cambios fácilmente cuando sea necesario.
+
+## Selectores de Tipo
+
+Un selector de tipo, previamente conocido como selector de elemento, es en su mayoría un elemento HTML, pero no siempre lo es. Por ejemplo, si un archivo CSS contiene estilos para un documento XML, los selectores de tipo podrían lucir algo como esto:
+
+<Prism
+  lang="css"
+  code={`quote {color: gray;}
+bib {color: red;}
+booktitle {color: purple;}
+myElement {color: red;}
+`}
+/>
+
+En otras palabras, los elementos del documento son los tipos de nodos que se están seleccionando. En XML, un selector podría ser cualquier cosa, ya que XML permite la creación de nuevos lenguajes de marcado que pueden tener prácticamente cualquier nombre como elemento. Si estás aplicando estilos a un documento HTML, el selector generalmente será uno de los muchos elementos HTML definidos, como `<p>`, `<h3>`, `<em>`, `<a>`, o incluso `<html>` en sí mismo. Por ejemplo:
+
+<Prism
+  lang="css"
+  code={`html {color: black;}
+h1 {color: gray;}
+h2 {color: silver;}
+`}
+/>
+
+Esto permite aplicar estilos a elementos específicos de un documento HTML o XML según su tipo. Puedes cambiar fácilmente la apariencia de estos elementos mediante reglas de estilo CSS, lo que facilita la personalización de la presentación de tu documento.

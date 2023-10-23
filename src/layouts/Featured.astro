@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import { customers } from "../assets/images";
+import Acordeon from "../components/Acordeon";
+---
+
+<section>
+  <div class="container my-space-3xl">
+    <div class="featured">
+      <div class="featured__img pb-space-l" data-aos="fade">
+        <Image
+          src={customers}
+          alt="Customers"
+          width={customers.width / 1.5}
+          height={customers.height / 1.5}
+        />
+      </div>
+      <h2 class="featured__title size-3">
+        We connect our customers with the best, and help them keep up-and stay
+        open.
+      </h2>
+      <Acordeon client:visible />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Head from "../layouts/Head.astro";
+import Service from "../layouts/Services.astro";
+import Footer from "../layouts/Footer.astro";
+import Featured from "../layouts/Featured.astro";
+import OurBlog from "../layouts/OurBlog.astro";
+import Testimonials from "../layouts/Testimonials.astro";
+import Subcribe from "../layouts/Subcribe.astro";
+import "../sass/main.scss";
+---
+
+<Layout title="Boldo">
+  <Head />
+  <main>
+    <Service />
+    <Testimonials />
+    <Featured />
+    <OurBlog />
+    <Subcribe />
+  </main>
+  <Footer />
+</Layout>

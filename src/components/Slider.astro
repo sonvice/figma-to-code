@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import { testimonials } from "../constant";
+import { ArrowRight, ArrowLeft } from "astro-feather-icons";
+---
+
+<div class="box-slider" data-aos="fade">
+  <div class="box-slider__box-btn d-flex">
+    <button class="btn" id="customPrevButton"><ArrowLeft size="36" /></button>
+    <button class="btn" id="customNextButton"><ArrowRight size="36" /></button>
+  </div>
+  <ul role="list" class="slider mt-space-l">
+    {
+      testimonials.map(({ text, avatar, manager, name }) => (
+        <li class="text-secondary">
+          <div class="slider__card p-space-l bg-primary">
+            <p class="size-1">{text}</p>
+            <div class="d-flex pt-space-l">
+              <Image
+                src={avatar}
+                alt="Avatar"
+                width={avatar.width / 2}
+                height={avatar.height / 2}
+              />
+              <div>
+                <p class="size--1 text-secondary fw-bold">{name}</p>
+                <span class="size--2">{manager}</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  import A11YSlider from "a11y-slider";
+  const slider = new A11YSlider(document.querySelector(".slider"), {
+    adaptiveHeight: true,
+    dots: false,
+    prevArrow: document.getElementById("customPrevButton"), // Botón personalizado "Anterior"
+    nextArrow: document.getElementById("customNextButton"), // Botón personalizado "Siguiente"
+  });
+</script>

@@ -1,0 +1,54 @@
+@use "../01-abstracts/" as ab;
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: var(--space-2xl);
+  align-items: center;
+  padding-top: var(--space-xl);
+  margin-top: var(--space-3xl);
+  position: relative;
+  @include ab.breakpoint(md) {
+    margin-top: var(--space-2xl);
+    gap: var(--space-l);
+    padding-top: 0;
+    text-align: left;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__box-title {
+    order: 1;
+    @include ab.breakpoint(md) {
+      order: 0;
+    }
+  }
+
+  & h1,
+  p {
+    margin-inline: auto;
+    @include ab.breakpoint(md) {
+      margin-inline: 0;
+    }
+  }
+
+  &__box-btn {
+    --horizontal-alignment: center;
+    @include ab.breakpoint-down(lg) {
+      button {
+        padding-inline: var(--space-l);
+      }
+    }
+    @include ab.breakpoint(md) {
+      --horizontal-alignment: flex-start;
+    }
+  }
+
+  & img {
+    margin-inline: auto;
+    @include ab.breakpoint(md) {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+---
+import CardBlog from "../../components/CardBlog.astro";
+//Get posts
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  posts: CollectionEntry<"posts">[];
+  start?: number;
+  end?: number;
+}
+const { posts, start, end } = Astro.props;
+---
+
+{posts.slice(start, end).map((post) => <CardBlog post={post} />)}

@@ -1,0 +1,25 @@
+---
+import { logo } from "../../assets/logos";
+import Nav from "../../components/Nav.astro";
+import HeroTitle from "../../components/HeroTitle.astro";
+const title = "We love to make great things, things that matter.";
+const paragraph =
+  "Funding handshake buyer business-to-business metrics iPad partnership. First mover advantage innovator success deployment non-disclosure.";
+---
+
+<div class="bg-secondary">
+  <div class="container pb-space-2xl">
+    <Nav
+      class="text-white"
+      logoNav={logo.src}
+      width={logo.width}
+      height={logo.height}
+    />
+    <HeroTitle
+      class="text-white"
+      title={title}
+      paraGraph={paragraph}
+      smallText="About"
+    />
+  </div>
+</div>

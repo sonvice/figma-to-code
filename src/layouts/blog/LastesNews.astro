@@ -1,0 +1,30 @@
+---
+import GridBlog from "./GridBlog.astro";
+import Button from "../../components/Button.astro";
+//Get posts
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
+
+// Ordenar las entradas por fecha de la más reciente a la más antigua
+posts.sort((entradaA, entradaB) => {
+  // Convertir las fechas al formato "MM/DD/YYYY" a objetos Date
+  const fechaA = new Date(entradaA.data.date).getTime();
+  const fechaB = new Date(entradaB.data.date).getTime();
+  // Comparar las fechas y ordenar de forma descendente
+  return fechaB - fechaA;
+});
+const start = 1;
+const end = 7;
+---
+
+<div class="container">
+  <div class="box-blog mt-space-4xl">
+    <h2>Latest news</h2>
+    <div class="box-blog__content py-space-2xl d-grid">
+      <GridBlog posts={posts} start={start} end={end} />
+    </div>
+    <div class="text-center">
+      <Button dataBg="white" target="Load more" />
+    </div>
+  </div>
+</div>

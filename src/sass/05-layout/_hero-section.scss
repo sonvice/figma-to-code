@@ -1,0 +1,25 @@
+@use "../01-abstracts" as ab;
+
+.bg-ellipse::before {
+  content: "";
+  width: 80.8rem;
+  height: 80.8rem;
+  right: var(--before-right, -54.6rem);
+  top: var(--before-top, -47rem);
+  background-image: url(../assets/images/ellipse.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: var(--before-bg-size, 80%);
+  position: absolute;
+
+  @include ab.breakpoint(lg) {
+    --before-bg-size: 90%;
+    --before-right: -34.6rem;
+    --before-top: -44rem;
+  }
+  @include ab.breakpoint(xl) {
+    --before-bg-size: 100%;
+    --before-right: -34.6rem;
+    --before-top: -44rem;
+  }
+}

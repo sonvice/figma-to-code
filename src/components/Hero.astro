@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import { heroGraphics } from "../assets/images";
+import { logos } from "../constant";
+import Button from "./Button.astro";
+import Scroller from "./Scroller.astro";
+---
+
+<div>
+  <div class="hero text-center text-white">
+    <div class="hero__box-title">
+      <h1 class="text-white">Save time by building fast with Boldo Template</h1>
+      <p class="mt-space-s text-light-gray size--1">
+        Funding handshake buyer business-to-business metrics iPad partnership.
+        First mover advantage innovator success deployment non-disclosure.
+      </p>
+      <div class="hero__box-btn d-flex mt-space-l">
+        <Button target="Buy template" dataBg="tertiary" />
+        <Button target="Explore" dataBg="transparent" />
+      </div>
+    </div>
+    <div>
+      <Image
+        src={heroGraphics}
+        alt="Hero Graphics"
+        width={heroGraphics.width}
+        height={heroGraphics.height}
+        loading="eager"
+      />
+    </div>
+  </div>
+  <Scroller logos={logos} dataDirection="left" dataSpeed="slow" />
+</div>

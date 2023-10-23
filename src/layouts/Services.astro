@@ -1,0 +1,123 @@
+---
+import { Image } from "astro:assets";
+import { agile, check, inconme } from "../assets/images";
+import { infographic } from "../constant";
+import { Feather, Eye, Sun, ArrowRight } from "astro-feather-icons";
+import Button from "../components/Button.astro";
+---
+
+<section>
+  <div class="container">
+    <small class="text-center text-gray d-block pt-space-3xl"
+      >Our Services</small
+    >
+    <h2 class="title-services text-center mx-space-auto mt-space-xs">
+      Handshake infographic mass market crowdfunding iteration.
+    </h2>
+    <div class="services d-grid my-space-2xl">
+      {
+        infographic.map((info) => (
+          <article
+            class="card-services flow"
+            data-aos={info.dataAos}
+            data-aos-delay={info.delay}
+          >
+            <div>
+              <Image
+                src={info.img}
+                alt={info.title}
+                width={info.img.width / 2}
+                height={info.img.height / 2}
+              />
+            </div>
+            <h3 class="card-services__title size-1">{info.title}</h3>
+            <p class="text-gray">{info.paragraph}</p>
+            <a class="services__link d-flex pb-space-2xs" href="/">
+              {info.link} <ArrowRight />
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="connect1 pt-space-2xl">
+      <div class="mx-space-auto" data-aos="fade-up">
+        <Image
+          src={inconme}
+          alt="income"
+          width={inconme.width / 2}
+          height={inconme.height / 2}
+          class="mx-space-auto"
+        />
+      </div>
+      <div class="mx-space-auto text-center">
+        <h3 class="text-center size-3 mx-space-auto">
+          We connect our customers with the best, and help them keep up-and stay
+          open.
+        </h3>
+        <ul class="list1 flow mt-space-l">
+          <li class="d-flex">
+            <img
+              src={check.src}
+              alt=""
+              width={check.width}
+              height={check.height}
+            />
+            <p>We connect our customers with the best.</p>
+          </li>
+          <li class="d-flex">
+            <img
+              src={check.src}
+              alt=""
+              width={check.width}
+              height={check.height}
+            />
+            <p>We connect our customers with the best.</p>
+          </li>
+          <li class="d-flex">
+            <img
+              src={check.src}
+              alt=""
+              width={check.width}
+              height={check.height}
+            />
+            <p>We connect our customers with the best.</p>
+          </li>
+        </ul>
+        <div class="box-btn mt-space-l">
+          <Button target="Start now" dataBg="blue" />
+        </div>
+      </div>
+    </div>
+    <div class="connect2 pb-space-3xl mt-space-3xl">
+      <div class="">
+        <h3 class="text-center size-3 mx-space-auto">
+          We connect our customers with the best, and help them keep up-and stay
+          open.
+        </h3>
+        <ul class="list2 mt-space-l flow">
+          <li class="d-flex px-space-s py-space-xs shadow">
+            <Feather size="28" />
+            <p>We connect our customers with the best.</p>
+          </li>
+          <li class="d-flex px-space-s py-space-xs shadow">
+            <Eye size="28" />
+            <p>We connect our customers with the best.</p>
+          </li>
+          <li class="d-flex px-space-s py-space-xs shadow">
+            <Sun size="28" />
+            <p>We connect our customers with the best.</p>
+          </li>
+        </ul>
+      </div>
+      <div data-aos="fade-up">
+        <Image
+          src={agile}
+          alt="Agile"
+          width={agile.width / 2}
+          height={agile.height / 2}
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+@use "../01-abstracts" as ab;
+.post {
+  &__back {
+    display: inline-flex;
+    border-bottom: 2px solid var(--color-secondary);
+    &:hover {
+      border-bottom: 2px solid transparent;
+      color: var(--color-gray);
+    }
+  }
+
+  &__data {
+    max-width: ab.px-to-rem(600px);
+    --horizontal-alignment: space-between;
+
+    & small:hover a {
+      color: var(--color-gray);
+    }
+  }
+
+  & h1 {
+    max-width: 25ch;
+    line-height: 1.2;
+  }
+  & h2 {
+    font-size: var(--size-3);
+  }
+
+  & :is(pre, pre + *, figure, figure + *, h1, h2, h3, h4) {
+    --flow: var(--space-xl);
+  }
+  & p {
+    color: var(--color-gray);
+  }
+}

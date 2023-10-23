@@ -1,0 +1,27 @@
+---
+author: rachel-green
+categories: Category
+tags: [diseño, desarrollo]
+date: 10/20/2023
+featured: false
+image: ./images/hero-blog.png
+avatar: ./images/racheel-green.png
+title: Etiqueta Link Para Conectar Hojas De Estilos
+---
+
+import { Prism } from "@astrojs/prism";
+
+El tag `<link> `desempeña un papel clave en la creación de sitios web bien estructurados y visualmente atractivos. Es utilizado para conectar hojas de estilo a documentos HTML y controlar su presentación. La etiqueta permite vincular múltiples hojas de estilo, lo que otorga flexibilidad en el diseño de páginas web.
+
+En el siguiente ejemplo, la etiqueta `<link>` vincula la hoja de estilo "sheet1.css" a un documento HTML. Esta hoja de estilo se aplica tanto en pantalla como al imprimir la página.
+
+<Prism
+  lang="markup"
+  code={`<link rel="stylesheet" href="sheet1.css" media="screen, print"/>`}
+/>
+
+## El atributo
+
+El atributo "rel" se configura como "stylesheet" para indicar que se está vinculando una hoja de estilo. Por otro lado, el atributo "media" controla cómo se aplica la hoja de estilo, en este caso, a la pantalla y a la impresión.
+
+Utilizar el tag `<link> `es esencial para lograr una presentación web coherente y profesional. Permite a los desarrolladores web gestionar eficazmente las hojas de estilo, lo que es fundamental para mantener la consistencia y el diseño visual de un sitio web. A través de esta etiqueta, se puede controlar la apariencia de las páginas y ofrecer una experiencia óptima a los usuarios.

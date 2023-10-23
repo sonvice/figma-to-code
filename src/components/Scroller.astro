@@ -1,0 +1,60 @@
+---
+interface Props {
+  logos: Array<{
+    logo: { src: string; width: number; height: number };
+    id: string;
+  }>;
+  dataDirection: string;
+  dataSpeed: string;
+}
+
+const { logos, dataDirection, dataSpeed } = Astro.props;
+---
+
+<div class="logos" data-direction={dataDirection} data-speed={dataSpeed}>
+  <ul role="list" class="logos__box d-flex py-space-2xl">
+    {
+      logos.map((item) => (
+        <li class="logo__item">
+          <img
+            src={item.logo.src}
+            width={item.logo.width}
+            height={item.logo.height}
+            alt="Logo"
+          />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  //La media query prefers-reduced-motion se utiliza para detectar si el usuario ha configurado su sistema o navegador para reducir o deshabilitar las animaciones y transiciones.
+  // matchMedia objeto. Este método se utiliza para evaluar las consultas de medios en JavaScript.
+  const reducedMotionQuery = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+  const logos = document.querySelectorAll(".logos");
+  const addAnimation = () => {
+    //Recorriendo el elemento padre y dándole un data attribute
+    logos.forEach((logo) => {
+      logo.setAttribute("data-animated", "true");
+
+      //Selecciona el elmento padre de la lista de logos y luego a sus hijos y los transformo en un array
+      const logoItem = logo.querySelector(".logos__box");
+      const logoContent = Array.from(logoItem.children);
+
+      //Clonando cada elemento y añadiento a la lista
+      logoContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        duplicatedItem.setAttribute("aria-hidden", true);
+        logoItem.appendChild(duplicatedItem);
+      });
+    });
+  };
+
+  // Comprobar si la preferencia de reducción de movimiento está habilitada
+  if (!reducedMotionQuery.matches) {
+    addAnimation();
+  }
+</script>

@@ -1,0 +1,60 @@
+@use "../01-abstracts" as ab;
+.footer {
+  &__block {
+    display: grid;
+    gap: var(--space-3xl);
+    @include ab.breakpoint(md) {
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-xl);
+    }
+    @include ab.breakpoint(lg) {
+      gap: var(--space-3xl);
+    }
+  }
+  &__block-logo {
+    p {
+      max-width: 34ch;
+    }
+  }
+
+  &__block-list {
+    --vertical-alignment: flex-start;
+    --gutter: var(--space-xl);
+    margin-left: -0.5rem;
+  }
+  &__block-list > li {
+    flex-grow: 1;
+  }
+
+  &__list {
+    & li:hover {
+      color: var(--color-tertiary);
+    }
+  }
+
+  &__list > li:first-child {
+    font-weight: var(--fw-bold);
+    padding-bottom: var(--space-s);
+  }
+  &__list > :where(:not(li:first-child)) {
+    color: var(--color-gray);
+  }
+
+  &__list > :nth-child(3) {
+    position: relative;
+  }
+  &__list-company > :nth-child(3)::after {
+    content: "Hiring!";
+    position: absolute;
+    font-size: var(--size--1);
+    color: var(--color-secondary);
+    font-weight: var(--fw-bold);
+    border-radius: 100vw;
+    top: 50%;
+    transform: translateY(-50%);
+    right: auto;
+    background-color: var(--color-tertiary);
+    padding-block: 6px;
+    padding-inline: var(--space-xs);
+  }
+}

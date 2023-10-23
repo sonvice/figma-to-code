@@ -1,0 +1,30 @@
+---
+import Nav from "../../components/Nav.astro";
+import { logoBlack } from "../../assets/logos";
+import HeroTitle from "../../components/HeroTitle.astro";
+import HeroBlog from "../../components/HeroBlog.astro";
+const title = "Thoughts and words";
+//Get collection posts
+import { getCollection, getEntry } from "astro:content";
+const allPost = await getCollection("posts");
+// Ordenar las entradas por fecha de la más reciente a la más antigua
+allPost.sort((entradaA, entradaB) => {
+  // Convertir las fechas al formato "MM/DD/YYYY" a objetos Date
+  const fechaA = new Date(entradaA.data.date).getTime();
+  const fechaB = new Date(entradaB.data.date).getTime();
+  // Comparar las fechas y ordenar de forma descendente
+  return fechaB - fechaA;
+});
+//Último post
+const ultimoPost = allPost[0];
+//Get author
+const author = await getEntry("author", ultimoPost.data.author);
+---
+
+<section>
+  <div class="container">
+    <Nav class="text-secondary" logoNav={logoBlack.src} />
+    <HeroTitle title={title} class="text-secondary" smallText="Blog" />
+    <HeroBlog ultimoPost={ultimoPost} author={author} />
+  </div>
+</section>

@@ -1,0 +1,74 @@
+---
+import { logoBlack } from "../assets/logos";
+import {
+  footerNavLandings,
+  footerNavCompany,
+  footerNavResources,
+} from "../constant";
+---
+
+<footer class="footer bg-primary mt-space-3xl py-space-3xl">
+  <div class="container">
+    <div class="footer__block">
+      <div class="footer__block-logo flow">
+        <img
+          src={logoBlack.src}
+          width={logoBlack.width}
+          height={logoBlack.height}
+          alt="Logo Black"
+        />
+        <p class="text-gray size--1">
+          Social media validation business model canvas graphical user interface
+          launch party creative facebook iPad twitter.
+        </p>
+        <small class="d-block text-gray pt-space-m size--1"
+          >All rights reserved.</small
+        >
+      </div>
+      <nav aria-label="Menu Secundario">
+
+        <ul role="list" class="footer__block-list d-flex">
+          <li>
+            <ul role="list" class="footer__list flow">
+              {
+                footerNavLandings.map(({ href, target }) => (
+                  <li>
+                    <a class="p-space-2xs" href={href}>
+                      {target}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </li>
+          <li>
+            <ul role="list" class="footer__list footer__list-company flow">
+              {
+                footerNavCompany.map(({ href, target }) => (
+                  <li>
+                    <a class="p-space-2xs" href={href}>
+                      {target}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </li>
+          <li>
+            <ul role="list" class="footer__list flow">
+              {
+                footerNavResources.map(({ href, target }) => (
+                  <li>
+                    <a class="p-space-2xs" href={href}>
+                      {target}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

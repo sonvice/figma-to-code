@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  class: string;
+  paraGraph?: string;
+  smallText: string;
+}
+
+const { title, class: textWhite, paraGraph, smallText } = Astro.props;
+---
+
+<div>
+  <div
+    class=`hero-title ${textWhite} flow text-center mt-space-2xl pb-space-2xl`
+  >
+    <small class="d-block pt-space-xl-s">{smallText}</small>
+    <h1 class="size-5 text-center mx-space-auto">
+      {title}
+    </h1>
+    {
+      paraGraph && (
+        <p class="mx-space-auto text-primary size--1">
+          Funding handshake buyer business-to-business metrics iPad partnership.
+          First mover advantage innovator success deployment non-disclosure.
+        </p>
+      )
+    }
+  </div>
+</div>

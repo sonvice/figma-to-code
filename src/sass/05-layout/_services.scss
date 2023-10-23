@@ -1,0 +1,116 @@
+@use "../01-abstracts/" as ab;
+
+.title-services {
+  text-wrap: initial;
+  max-width: 28ch;
+}
+
+.services {
+  --min-max: 8.75rem;
+  gap: var(--space-l);
+  @include ab.breakpoint(sm) {
+    --min-max: 10.75rem;
+  }
+  @include ab.breakpoint(xl) {
+    padding-inline: 3rem;
+    gap: 6.25rem;
+  }
+
+  &__link {
+    border-bottom: 2px solid var(--color-secondary);
+    width: max-content;
+    &:hover,
+    &:focus {
+      color: var(--color-gray);
+      border-bottom: transparent;
+    }
+  }
+
+  & img {
+    width: 100%;
+  }
+}
+
+/* Card services */
+.card-services {
+  &__title {
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+  }
+}
+
+/* Connect grid */
+.connect1,
+.connect2 {
+  @include ab.breakpoint(xl) {
+    padding-inline: 3rem;
+  }
+}
+
+.connect1,
+.connect2 {
+  display: grid;
+  align-items: center;
+  gap: var(--space-xl);
+  @include ab.breakpoint(xl) {
+    gap: var(--space-3xl);
+  }
+  & h3 {
+    @include ab.breakpoint(lg) {
+      text-align: left;
+    }
+  }
+}
+
+.connect1,
+.connect2 {
+  @include ab.breakpoint(lg) {
+    grid-template-columns: 1fr 1fr;
+    justify-items: end;
+  }
+}
+.box-btn {
+  @include ab.breakpoint(lg) {
+    text-align: left;
+  }
+}
+
+.connect2 > :first-child {
+  order: 2;
+  @include ab.breakpoint(lg) {
+    order: 0;
+  }
+}
+.connect2 > :last-child {
+  margin: auto;
+  @include ab.breakpoint(lg) {
+    margin: initial;
+  }
+}
+
+.list1,
+.list2 {
+  --horizontal-alignment: center;
+  --gutter: var(--space-2xs);
+  --flow: var(--space-m);
+  @include ab.breakpoint(lg) {
+    --horizontal-alignment: start;
+  }
+  @include ab.breakpoint(md) {
+    --gutter: var(--space-m);
+  }
+  & p,
+  li {
+    max-width: none;
+  }
+}
+.list2 li {
+  border-radius: 4px;
+}
+.list2 li:hover {
+  transition: 0.3s ease;
+  cursor: pointer;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}

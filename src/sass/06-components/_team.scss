@@ -1,0 +1,10 @@
+@use "../01-abstracts" as ab;
+.team {
+  --min-max: 9rem;
+
+  gap: var(--space-l);
+  @include ab.breakpoint(lg) {
+    --min-max: 16rem;
+    padding-inline: 3rem;
+  }
+}

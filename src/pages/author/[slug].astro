@@ -1,0 +1,69 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { logoBlack } from "../../assets/logos";
+import Nav from "../../components/Nav.astro";
+import { ArrowLeft } from "astro-feather-icons";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../layouts/Footer.astro";
+import Subcribe from "../../layouts/Subcribe.astro";
+
+import { Image } from "astro:assets";
+export async function getStaticPaths() {
+  const author = await getCollection("author");
+
+  const paths = author.map((name) => {
+    return {
+      params: {
+        slug: name.slug,
+      },
+      props: {
+        name,
+      },
+    };
+  });
+
+  return paths;
+}
+
+type Props = {
+  name: CollectionEntry<"author">;
+};
+
+const { name } = Astro.props;
+const { Content } = await name.render();
+---
+
+<Layout title={`Boldo | ${name.data.name}`}>
+  <div class="container">
+    <Nav logoNav={logoBlack.src} />
+
+    <div class="card-author d-flex mt-space-3xl shadow">
+      <Image
+        src={name.data.image}
+        width={name.data.image.width / 2.5}
+        height={name.data.image.height / 2.5}
+        alt={name.data.name}
+        format="webp"
+      />
+      <div class="card-author__info flow">
+        <h1>{name.data.name}</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+          perferendis, adipisci repudiandae accusamus tempore ut esse eius
+          deserunt iusto placeat quo expedita delectus distinctio
+        </p>
+        <small class="size--1 d-block text-gray"
+          >168 Following - 445 Followers</small
+        >
+      </div>
+    </div>
+    <a href="/blog" class="post__back d-flex my-space-l py-space-2xs">
+      <ArrowLeft />Back to all blogs</a
+    >
+
+    <Content />
+  </div>
+  <Subcribe />
+  <Footer />
+</Layout>

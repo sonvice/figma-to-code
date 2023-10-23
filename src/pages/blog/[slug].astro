@@ -1,0 +1,86 @@
+---
+import { Image } from "astro:assets";
+import { ArrowLeft } from "astro-feather-icons";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../layouts/Footer.astro";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import Nav from "../../components/Nav.astro";
+import { logoBlack } from "../../assets/logos";
+import Subcribe from "../../layouts/Subcribe.astro";
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection("posts");
+  const paths = posts.map((post) => {
+    return {
+      params: {
+        slug: post.slug,
+      },
+      props: {
+        post,
+      },
+    };
+  });
+  return paths;
+};
+
+type Props = {
+  post: CollectionEntry<"posts">;
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+//Get author
+const getAuthor = await getEntry("author", post.data.author);
+//Formato de fecha
+const fechaConvertida = new Date(post.data.date).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<Layout
+  title={`Boldo | ${post.data.title}`}
+  description={post.data.title}
+  image={post.data.image.src}
+>
+  <div class="container">
+    <Nav class="text-secondary" logoNav={logoBlack.src} />
+  </div>
+  <main>
+    <article class="post pt-space-3xl flow container">
+      <a href="/blog" class="post__back d-flex my-space-l py-space-2xs">
+        <ArrowLeft />Back to all blogs</a
+      >
+
+      <Image
+        src={post.data.image}
+        alt={post.data.title}
+        width={post.data.image.width}
+        height={post.data.image.height}
+      />
+
+      <div class="post__data pt-space-s d-flex">
+        <div class="d-flex">
+          <Image
+            src={post.data.avatar}
+            alt={"avatar"}
+            width={post.data.avatar.width / 2}
+            height={post.data.avatar.height / 2}
+          />
+          <small>
+            <a href=`/author/${getAuthor.slug}`>{getAuthor.data.name}</a>
+          </small>
+        </div>
+        <p class="size--1 fw-bold">
+          <time class="text-gray fw-regular ml-space-xs">{fechaConvertida}</time
+          >
+        </p>
+      </div>
+      <h1 class="mt-space-l">{post.data.title}</h1>
+      <Content />
+    </article>
+  </main>
+  <Subcribe />
+  <Footer />
+</Layout>

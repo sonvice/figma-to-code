@@ -1,0 +1,31 @@
+@use "../01-abstracts" as ab;
+.featured {
+  display: grid;
+  gap: var(--space-s);
+  grid-template-columns: repeat(2, 1fr);
+  @include ab.breakpoint(xl) {
+    padding-inline: 3rem;
+  }
+  &__img {
+    grid-column: 2 span;
+    & img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    grid-column: 2 span;
+    @include ab.breakpoint(md) {
+      grid-column: 1 span;
+    }
+  }
+
+  .chakra-accordion {
+    grid-column: 2 span;
+    margin-top: var(--space-l);
+    @include ab.breakpoint(md) {
+      grid-column: 1 span;
+      margin-top: 0;
+    }
+  }
+}

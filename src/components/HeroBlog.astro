@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+type Props = { author: CollectionEntry<"author">; ultimoPost };
+const { ultimoPost, author } = Astro.props;
+
+//Formato de fecha
+const fechaConvertida = new Date(ultimoPost.data.date).toLocaleDateString(
+  "en-US",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }
+);
+---
+
+<div>
+  <div class="container">
+    <div class="hero-blog pb-space-2xl">
+      <Image
+        src={ultimoPost.data.image}
+        alt={ultimoPost.data.title}
+        width={550}
+        height={386}
+        data-aos="fade"
+      />
+      <div>
+        <div>
+          <p>
+            <strong class="mr-space-s">{ultimoPost.data.categories}</strong>
+            <span class="text-gray">{fechaConvertida}</span>
+          </p>
+          <h2 class="mt-space-2xs">
+            <a href=`/blog/${ultimoPost.slug}`>{ultimoPost.data.title}</a>
+          </h2>
+        </div>
+        <div class="d-flex mt-space-s">
+          <Image
+            src={ultimoPost.data.avatar}
+            width={32}
+            height={32}
+            alt={ultimoPost.data.author}
+          /><span
+            ><a href=`/author/${ultimoPost.data.author}`>{author.data.name}</a
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

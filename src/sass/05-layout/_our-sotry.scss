@@ -1,0 +1,10 @@
+@use "../01-abstracts" as ab;
+.our-story {
+  max-width: ab.px-to-rem(842px);
+  & h2 {
+    text-wrap: initial;
+  }
+  & p {
+    max-width: 70ch;
+  }
+}

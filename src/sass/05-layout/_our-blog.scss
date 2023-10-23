@@ -1,0 +1,31 @@
+@use "../01-abstracts" as ab;
+
+.box-blog {
+  padding-inline: 2.3125rem;
+  @include ab.breakpoint(xl) {
+    padding-inline: 6.3125rem;
+  }
+
+  & h2 {
+    text-wrap: initial;
+  }
+
+  &__content {
+    --min-max: 11.5rem;
+    row-gap: var(--space-2xl);
+    column-gap: var(--space-xl);
+    @include ab.breakpoint(lg) {
+      --min-max: 16rem;
+    }
+  }
+
+  & .btn[data-bg="blue"] {
+    --bg-color: var(--color-white);
+    --color: var(--color-secondary);
+    --borde: var(--color-secondary);
+  }
+  & .btn:hover {
+    --hover-bg: var(--color-secondary);
+    --hover-text: var(--color-white);
+  }
+}

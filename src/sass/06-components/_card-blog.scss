@@ -1,0 +1,7 @@
+.card-blog {
+  flex-direction: column;
+  --vertical-alignment: start;
+  & a:hover {
+    color: var(--color-gray);
+  }
+}

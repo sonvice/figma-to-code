@@ -1,0 +1,17 @@
+.chakra-accordion {
+  &__item {
+    border-bottom: 1px solid #c4c4c4;
+
+    & h3 {
+      max-width: 60ch;
+    }
+  }
+
+  & .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--space-m);
+    height: var(--space-m);
+  }
+}

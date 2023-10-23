@@ -1,0 +1,17 @@
+---
+import Button from "./Button.astro";
+---
+
+<form class="form text-primary relative">
+  <div class="form__box-input d-flex">
+    <label class="visually-hidden" for="email"> E-mail</label>
+    <input
+      class="py-space-xs px-space-m"
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Your email address"
+    />
+    <Button target="Start now" dataBg="tertiary" />
+  </div>
+</form>

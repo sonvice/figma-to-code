@@ -1,0 +1,63 @@
+/* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1200,20,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,xl-s&g=s,l,2xl,12 */
+
+/* Typography */
+$text-sizes: (
+  /* Step -1: 11.05px → 14.00px */ "size--2":
+    clamp(0.719rem, 0.662rem + 0.28vw, 0.875rem),
+  /* Step -1: 13.33px → 16.00px */ "size--1":
+    clamp(0.8331rem, 0.7724rem + 0.3034vw, 1rem),
+  /* Step 0: 16.00px → 20.00px */ "base":
+    clamp(1rem, 0.9091rem + 0.4545vw, 1.25rem),
+  /* Step 1: 19.00px → 24.00px */ "size-1":
+    clamp(1.188rem, 1.074rem + 0.57vw, 1.5rem),
+  /* Step 2: 20.00px → 28.00px */ "size-2":
+    clamp(1.25rem, 1.068rem + 0.91vw, 1.75rem),
+  /* Step 3: 24.00px → 36.00px */ "size-3":
+    clamp(1.5rem, 1.227rem + 1.36vw, 2.25rem),
+  /* Step 4: 32.00px → 48.00px */ "size-4": clamp(2rem, 1.636rem + 1.82vw, 3rem),
+  /* Step 5: 44.00px → 64.00px */ "size-5":
+    clamp(2.75rem, 2.295rem + 2.27vw, 4rem),
+  /* Step 6: 56.00px → 96.00px */ "size-6":
+    clamp(3.5rem, 2.591rem + 4.55vw, 6rem)
+);
+
+/* Space */
+$spaces: (
+  "space-auto": auto,
+  "space-0": 0,
+  /* Space 2xs: 8px → 10px */ "space-2xs":
+    clamp(0.5rem, 0.4545rem + 0.2273vw, 0.625rem),
+  /* Space xs: 12px → 15px */ "space-xs":
+    clamp(0.75rem, 0.6818rem + 0.3409vw, 0.9375rem),
+  /* Space s: 16px → 20px */ "space-s":
+    clamp(1rem, 0.9091rem + 0.4545vw, 1.25rem),
+  /* Space m: 24px → 30px */ "space-m":
+    clamp(1.5rem, 1.3636rem + 0.6818vw, 1.875rem),
+  /* Space l: 32px → 40px */ "space-l":
+    clamp(2rem, 1.8182rem + 0.9091vw, 2.5rem),
+  /* Space xl: 48px → 60px */ "space-xl":
+    clamp(3rem, 2.7273rem + 1.3636vw, 3.75rem),
+  /* Space 2xl: 64px → 80px */ "space-2xl":
+    clamp(4rem, 3.6364rem + 1.8182vw, 5rem),
+  /* Space 3xl: 96px → 120px */ "space-3xl":
+    clamp(6rem, 5.4545rem + 2.7273vw, 7.5rem),
+  "space-4xl": clamp(6rem, 5.74rem + 1.13vw, 6.75rem),
+  /* Space xl-s: 48px → 20px */ "space-xl-s":
+    clamp(1.25rem, 3.6364rem + -3.1818vw, 3rem),
+);
+
+/* Colors */
+$primary: (
+  "secondary": hsl(209, 73%, 15%),
+  "tertiary": hsl(149, 70%, 65%),
+  "primary": hsl(210, 40%, 98%),
+);
+
+//### Neutral
+$neutral: (
+  "light-blue": hsl(196, 98%, 52%),
+  "light-gray": hsl(0, 0%, 95%),
+  "gray-blue": hsl(207, 45%, 70%),
+  "white": hsl(0, 0%, 100%),
+  "gray": hsl(0, 0%, 47%),
+);

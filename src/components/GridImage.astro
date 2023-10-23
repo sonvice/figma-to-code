@@ -1,0 +1,20 @@
+---
+import { gridImg } from "../constant";
+---
+
+<ul role="list" class="grid-image">
+  {
+    gridImg.map(({ img, alt, dataAos, delay }) => {
+      return (
+        <li data-aos={dataAos} data-aos-delay={delay}>
+          <img
+            src={img.src}
+            width={img.width / 2}
+            height={img.height / 2}
+            alt={alt}
+          />
+        </li>
+      );
+    })
+  }
+</ul>

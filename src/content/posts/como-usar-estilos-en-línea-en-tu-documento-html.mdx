@@ -1,0 +1,36 @@
+---
+author: chandler-bing
+categories: Category
+tags: [diseño, desarrollo]
+date: 10/10/2023
+featured: false
+image: ./images/chandler.png
+avatar: ./images/chandler-bing.png
+title: ¿Cómo usar estilos en línea en tu documento HTML?
+---
+
+import { Prism } from "@astrojs/prism";
+
+## Estilos en línea
+
+Si deseas asignar algunos estilos a un elemento individual sin necesidad de hojas de estilos incorporadas o externas, puedes utilizar el atributo HTML style:
+
+<Prism
+  lang="markup"
+  code={`<p style="color: gray;">El alimento más maravilloso de todos para el desayuno es el gofre, una deliciosa y esponjosa losa con crestas y cráteres cocinada en casa...</p>
+`}
+/>
+
+El atributo style se puede asociar con cualquier etiqueta HTML, incluso con etiquetas que se encuentran fuera de `<body>` (por ejemplo, `<head>` o `<title>`).
+
+La sintaxis del atributo style es bastante común. De hecho, se parece mucho a las declaraciones que se encuentran en el contenedor `<style>`, excepto que aquí las llaves son reemplazadas por comillas dobles. Así que `<p style="color: marrón; fondo: amarillo;">` establecerá el color del texto en marrón y el fondo en amarillo solo para ese párrafo. Ninguna otra parte del documento se verá afectada por esta declaración.
+
+Ten en cuenta que solo puedes colocar un bloque de declaración, no una hoja de estilos completa, dentro de un atributo de estilo en línea. Por lo tanto, no puedes incluir un `@import` en un atributo de estilo ni agregar reglas completas. Lo único que puedes poner en el valor de un atributo de estilo es lo que podría ir entre las llaves de una regla.
+
+El uso del atributo style se desaconseja. Muchas de las ventajas principales de CSS, como la capacidad de organizar estilos centralizados que controlan la apariencia de todo el documento o de todos los documentos en un servidor web, se ven anuladas cuando colocas estilos en un atributo de estilo. En muchos aspectos, los estilos en línea no son mucho mejores que la antigua etiqueta `<font>`, incluso si tienen mucha más flexibilidad en cuanto a los efectos visuales que pueden aplicar.
+
+## Resumen
+
+Con CSS, puedes cambiar por completo la forma en que los elementos son presentados por un agente de usuario. Puedes hacerlo a un nivel básico con la propiedad display y de una manera diferente al asociar hojas de estilos a un documento. El usuario nunca sabrá si esto se hace mediante una hoja de estilos externa o incorporada, o incluso con un estilo en línea. La verdadera importancia de las hojas de estilos externas radica en la forma en que te permiten colocar toda la información de presentación de un sitio en un solo lugar y dirigir todos los documentos a ese lugar. Esto no solo facilita las actualizaciones y el mantenimiento del sitio, sino que también ayuda a ahorrar ancho de banda, ya que se elimina toda la presentación de los documentos.
+
+Para aprovechar al máximo el poder de CSS, debes saber cómo asociar un conjunto de estilos con los elementos de un documento. Para comprender completamente cómo CSS puede lograr todo esto, necesitas comprender cómo CSS selecciona las partes de un documento para aplicar estilos, lo cual es el tema de los próximos capítulos.

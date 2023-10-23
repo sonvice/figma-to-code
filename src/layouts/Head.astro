@@ -1,0 +1,18 @@
+---
+import { logo } from "../assets/logos";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+---
+
+<section class="bg-ellipse bg-secondary relative hidden">
+  <div class="container">
+    <Nav
+      class="text-white"
+      logoNav={logo.src}
+      width={logo.width}
+      height={logo.height}
+      ariaLabel={'Menu Principal'}
+    />
+    <Hero />
+  </div>
+</section>

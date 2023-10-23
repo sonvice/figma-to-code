@@ -1,0 +1,20 @@
+@use "../01-abstracts" as ab;
+.values {
+  display: grid;
+  gap: var(--space-2xl);
+  @include ab.breakpoint(lg) {
+    padding-left: var(--space-xl);
+  }
+  & li {
+    --gutter: var(--space-l);
+    max-width: 80ch;
+    @include ab.breakpoint(lg) {
+      --gutter: var(--space-xl);
+    }
+  }
+
+  &__text {
+    flex-basis: ab.px-to-rem(400px);
+    flex-grow: 1;
+  }
+}

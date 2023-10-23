@@ -1,0 +1,38 @@
+---
+import Button from "../components/Button.astro";
+import GridBlog from "./blog/GridBlog.astro";
+const href = "/blog";
+//Get posts
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
+// Ordenar las entradas por fecha de la más reciente a la más antigua
+posts.sort((entradaA, entradaB) => {
+  // Convertir las fechas al formato "MM/DD/YYYY" a objetos Date
+  const fechaA = new Date(entradaA.data.date).getTime();
+  const fechaB = new Date(entradaB.data.date).getTime();
+  // Comparar las fechas y ordenar de forma descendente
+  return fechaB - fechaA;
+});
+
+const start = 1;
+const end = 4;
+---
+
+<section>
+  <div class="container pt-space-m">
+    <div class="box-blog">
+      <small class="d-block text-center text-gray">Our Blog</small>
+      <h2 class="mt-space-xs text-center">
+        Value proposition accelerator product management venture
+      </h2>
+      <div class="box-blog__content py-space-2xl d-grid">
+        <GridBlog posts={posts} start={start} end={end} />
+      </div>
+      <div class="text-center">
+        <a class="btn py-space-xs px-space-xl" data-bg="blue" href="/blog"
+          >Load more</a
+        >
+      </div>
+    </div>
+  </div>
+</section>

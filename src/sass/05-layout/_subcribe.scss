@@ -1,0 +1,18 @@
+@use "../01-abstracts" as ab;
+
+.subcribe {
+  border-radius: 12px;
+  overflow: hidden;
+  --before-top: -55rem;
+  &::before {
+    @include ab.breakpoint(lg) {
+      --before-right: -36.6rem;
+      --before-top: -66rem;
+    }
+  }
+
+  & h2 {
+    text-wrap: initial;
+    max-width: 25ch;
+  }
+}

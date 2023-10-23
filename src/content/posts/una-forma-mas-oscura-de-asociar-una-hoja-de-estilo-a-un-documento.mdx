@@ -1,0 +1,39 @@
+---
+author: chandler-bing
+categories: Category
+tags: [diseño, desarrollo]
+date: 10/17/2023
+featured: false
+image: ./images/img-blog5.png
+avatar: ./images/chandler-bing.png
+title: Una forma más oscura de asociar una hoja de estilo a un documento
+---
+
+import { Prism } from "@astrojs/prism";
+
+## HTTP Linking
+
+Existe otra forma, mucho más oscura, de asociar CSS con un documento, y es vincularlos a través de encabezados HTTP.
+
+En el servidor web Apache HTTP Server, esto se puede lograr agregando una referencia al archivo CSS en un archivo .htaccess. Por ejemplo:
+
+<Prism
+  lang="css"
+  code={`Header add Link "</ui/testing.css>;rel=stylesheet;type=text/css"`}
+/>
+
+Esto hará que los navegadores compatibles asocien la hoja de estilos referenciada con cualquier documento servido desde ese archivo .htaccess. El navegador la tratará como si fuera una hoja de estilos vinculada. Alternativamente, y probablemente de manera más eficiente, puedes agregar una regla equivalente al archivo httpd.conf del servidor:
+
+<Prism
+  lang="css"
+  code={`<Directory /ruta/a/tu/directorio/html/público>
+Header add Link "</ui/testing.css>;rel=stylesheet;type=text/css"
+</Directory>
+`}
+/>
+
+El efecto es exactamente el mismo en los navegadores compatibles. La única diferencia radica en el lugar donde declaras la vinculación.
+
+Probablemente hayas notado el uso del término "navegadores compatibles". Hasta finales de 2022, los navegadores ampliamente utilizados que admiten la vinculación HTTP de hojas de estilos son la familia Firefox y Opera. Esto restringe esta técnica principalmente a entornos de desarrollo basados en uno de esos navegadores. En tal situación, puedes utilizar la vinculación HTTP en el servidor de pruebas para marcar cuándo estás en el sitio de desarrollo en lugar del sitio público. También es una forma interesante de ocultar estilos de los navegadores Chromium, suponiendo que tengas una razón para hacerlo.
+
+> _Los equivalentes a esta técnica de vinculación se utilizan en lenguajes de programación comunes como PHP e IIS, ambos de los cuales permiten al autor emitir encabezados HTTP. También es posible utilizar estos lenguajes para escribir explícitamente elementos de vínculo en el documento según lo que ofrezca el servidor del documento. Esta es una aproximación más sólida en términos de soporte del navegador: todos los navegadores admiten el elemento de vínculo._

@@ -1,0 +1,116 @@
+:root {
+  --size--2: clamp(0.719rem, 0.662rem + 0.28vw, 0.875rem);
+  --size--1: clamp(0.8331rem, 0.7724rem + 0.3034vw, 1rem);
+  --base: clamp(1rem, 0.9091rem + 0.4545vw, 1.25rem);
+  --size-1: clamp(1.188rem, 1.074rem + 0.57vw, 1.5rem);
+  --size-2: clamp(1.25rem, 1.068rem + 0.91vw, 1.75rem);
+  --size-3: clamp(1.5rem, 1.227rem + 1.36vw, 2.25rem);
+  --size-4: clamp(2rem, 1.636rem + 1.82vw, 3rem);
+  --size-5: clamp(2.75rem, 2.295rem + 2.27vw, 4rem);
+  --size-6: clamp(3.5rem, 2.591rem + 4.55vw, 6rem);
+
+  --space-2xs: clamp(0.5rem, 0.4545rem + 0.2273vw, 0.625rem);
+  --space-xs: clamp(0.75rem, 0.6818rem + 0.3409vw, 0.9375rem);
+  --space-s: clamp(1rem, 0.9091rem + 0.4545vw, 1.25rem);
+  --space-m: clamp(1.5rem, 1.3636rem + 0.6818vw, 1.875rem);
+  --space-l: clamp(2rem, 1.8182rem + 0.9091vw, 2.5rem);
+  --space-xl: clamp(3rem, 2.7273rem + 1.3636vw, 3.75rem);
+  --space-2xl: clamp(4rem, 3.6364rem + 1.8182vw, 5rem);
+  --space-3xl: clamp(6rem, 5.4545rem + 2.7273vw, 7.5rem);
+  --space-xl-s: clamp(1.25rem, 3.6364rem + -3.1818vw, 3rem);
+
+  --ff-headings: "Manrope", sans-serif;
+  --ff-paragraphs: "Open Sans", sans-serif;
+  //Font Weight
+  --fw-regular: 300;
+  --fw-bold: 700;
+
+  --color-primary: hsl(210, 40%, 98%);
+  --color-secondary: hsl(209, 73%, 15%);
+  --color-tertiary: hsl(149, 70%, 65%);
+
+  --color-light-blue: hsl(196, 98%, 52%);
+  --color-light-gray: hsl(0, 0%, 95%);
+  --color-gray-blue: hsl(207, 45%, 70%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-gray: hsl(0, 0%, 47%);
+
+  --shadow: 0 4px 32px rgb(0 0 0 / 8%);
+}
+
+body {
+  font-family: var(--ff-paragraphs);
+  font-size: var(--base);
+  overflow-x: hidden;
+  background-color: var(--color-white);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.5;
+  font-family: var(--ff-headings);
+}
+
+h1 {
+  font-size: var(--size-4);
+  font-weight: var(--fw-regular);
+}
+
+h2 {
+  font-size: var(--size-4);
+  font-weight: var(--fw-regular);
+}
+
+h3 {
+  font-weight: var(--fw-regular);
+}
+
+p,
+li {
+  max-width: 60ch;
+  font-family: var(--ff-paragraphs);
+}
+p {
+  line-height: 1.75;
+}
+
+h1 {
+  max-width: 22ch;
+}
+
+h2,
+h3 {
+  max-width: 40ch;
+}
+
+a {
+  color: currentcolor;
+  text-decoration-color: var(--color-primary);
+}
+
+a:hover {
+  text-decoration: currentColor;
+}
+button {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+}
+
+img {
+  height: auto;
+}
+
+ul {
+  padding: 0;
+}
+
+small {
+  font-size: var(--base);
+}
+
+::selection {
+  color: var(--color-primary);
+  background: var(--color-secondary);
+}

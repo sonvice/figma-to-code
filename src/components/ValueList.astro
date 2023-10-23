@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import { values } from "../constant";
+---
+
+<ul class="values" role="list">
+  {
+    values.map(({ img, title, paragraph, dataAos, delay }) => (
+      <li
+        class="d-flex mx-space-auto"
+        data-aos={dataAos}
+        data-aos-delay={delay}
+      >
+        <Image
+          src={img}
+          alt={title}
+          width={img.width / 2}
+          height={img.height / 2}
+        />
+        <div class="values__text">
+          <h3 class="size-2">{title}</h3>
+          <p>{paragraph}</p>
+        </div>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import { getEntry, type CollectionEntry } from "astro:content";
+type Props = {
+  post: CollectionEntry<"posts">;
+};
+
+const { post } = Astro.props;
+//Formato de fecha
+const fechaConvertida = new Date(post.data.date).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+//Get Author
+const getAuthor = await getEntry("author", post.data.author);
+---
+
+<article class="card-blog d-flex">
+  <Image
+    src={post.data.image}
+    alt={post.data.title}
+    width={post.data.image.width / 2}
+    height={post.data.image.height / 2}
+  />
+
+  <p class="size--1 fw-bold">
+    {post.data.categories}
+    <time class="text-gray fw-regular ml-space-xs">{fechaConvertida}</time>
+  </p>
+  <h3 class="base"><a href=`/blog/${post.slug}`>{post.data.title}</a></h3>
+  <div class="mt-space-auto">
+    <div class="d-flex">
+      <Image
+        src={post.data.avatar}
+        alt={"avatar"}
+        width={post.data.avatar.width / 2}
+        height={post.data.avatar.height / 2}
+      />
+      <small
+        ><a href=`/author/${getAuthor.slug}`>{getAuthor.data.name}</a></small
+      >
+    </div>
+  </div>
+</article>

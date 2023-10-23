@@ -1,0 +1,38 @@
+---
+author: monica-geller
+categories: Category
+tags: [diseño, desarrollo]
+date: 10/17/2023
+featured: false
+image: ./images/monica.png
+avatar: ./images/monica-geller.png
+title: Definición De Selectores Descendientes
+---
+
+import { Prism } from "@astrojs/prism";
+
+El primer beneficio de comprender este modelo es la capacidad de definir selectores descendientes. La definición de selectores descendientes consiste en crear reglas que funcionan en ciertas circunstancias estructurales pero no en otras. Como ejemplo, supongamos que deseas aplicar estilos solo a los elementos `<em>` que descienden de elementos `<h1>`. Para hacerlo, escribe lo siguiente:
+
+<Prism
+  lang="css"
+  code={`h1 em {color: gray;}
+`}
+/>
+
+Esta regla hará que cualquier texto en un elemento `<em>` que sea descendiente de un elemento `<h1>` se vuelva gris. Otro texto `<em>`, como el que se encuentra en un párrafo o una cita en bloque, no será seleccionado por esta regla. La figura 2-15 ilustra el resultado.
+
+En un selector descendiente, el lado del selector de una regla está compuesto por dos o más selectores separados por espacios. El espacio entre los selectores es un ejemplo de un combinador. Cada combinador de espacio se puede traducir como "encontrado dentro de," "que forma parte de," o "que es un descendiente de," pero solo si lees el selector de derecha a izquierda. Por lo tanto, h1 em se puede traducir como "Cualquier elemento `<em>` que es descendiente de un elemento `<h1>`."
+
+Para leer el selector de izquierda a derecha, podrías expresarlo como "Cualquier `<h1>` que contiene un `<em>` tendrá los siguientes estilos aplicados al `<em>`." Esto sería mucho más verboso y confuso, y es por eso que, al igual que el navegador, leemos los selectores de derecha a izquierda.
+
+No estás limitado a dos selectores. Por ejemplo:
+
+<Prism
+  lang="css"
+  code={`ul ol ul em {color: gray;}
+`}
+/>
+
+En este caso, como muestra la Figura 2-16, cualquier texto enfatizado que forme parte de una lista desordenada que sea parte de una lista ordenada que, a su vez, sea parte de una lista desordenada (sí, esto es correcto) será gris. Esta es claramente un criterio de selección muy específico.
+
+Los selectores descendientes pueden ser extremadamente poderosos. Consideremos un ejemplo común. Supongamos que tienes un documento con una barra lateral y una área principal. La barra lateral tiene un fondo azul, el área principal tiene un fondo blanco y ambas áreas incluyen listas de enlaces. No puedes establecer que todos los enlaces sean azules porque serían imposibles de leer en la barra lateral, y tampoco puedes establecer que todos los enlaces sean blancos porque desaparecerían en la parte principal de la página.

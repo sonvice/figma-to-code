@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import { team } from "../constant";
+---
+
+<ul class="team d-grid mb-space-3xl" role="list">
+  {
+    team.map(({ img, name, position, dataAos, delay }) => (
+      <li data-aos={dataAos} data-aos-delay={delay}>
+        <Image
+          src={img}
+          alt={name}
+          width={img.width / 2}
+          height={img.height / 2}
+        />
+        <h3 class="mt-space-m size-2">{name}</h3>
+        <span class="text-gray mt-space-2xs d-block">{position}</span>
+      </li>
+    ))
+  }
+</ul>

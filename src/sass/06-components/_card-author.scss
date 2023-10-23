@@ -1,0 +1,18 @@
+@use "../01-abstracts" as ab;
+
+.card-author {
+  --horizontal-alignment: center;
+  padding-block: var(--space-l);
+  padding-inline: var(--space-xl);
+
+  @include ab.breakpoint(sm) {
+    padding-block: var(--space-2xl);
+    padding-inline: var(--space-3xl);
+    --gutter: var(--space-l);
+  }
+
+  &__info {
+    flex-basis: ab.px-to-rem(400px);
+    flex-grow: 1;
+  }
+}

@@ -1,0 +1,12 @@
+---
+interface Props {
+  target: string;
+  dataBg?: string;
+  href?: string;
+}
+const { target, dataBg, href } = Astro.props;
+---
+
+<button href={href} class="btn py-space-xs px-space-xl" data-bg={dataBg}
+  >{target}</button
+>

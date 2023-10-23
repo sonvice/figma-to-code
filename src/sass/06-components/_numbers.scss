@@ -1,0 +1,21 @@
+@use "../01-abstracts" as ab;
+
+.numbers {
+  justify-items: center;
+  gap: var(--space-l);
+  --min-max: 11.5rem;
+
+  @include ab.breakpoint(lg) {
+    --min-max: 16rem;
+  }
+
+  & span {
+    line-height: 1.2;
+    font-family: var(--ff-headings);
+    font-size: var(--size-5);
+
+    @include ab.breakpoint(lg) {
+      font-size: var(--size-6);
+    }
+  }
+}

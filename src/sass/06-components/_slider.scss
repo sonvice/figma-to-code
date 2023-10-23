@@ -1,0 +1,60 @@
+@use "../01-abstracts" as ab;
+
+.container-slider {
+  @include ab.breakpoint(xl) {
+    padding-inline: 3rem;
+  }
+
+  & h2 {
+    text-wrap: initial;
+    max-width: 25ch;
+  }
+}
+
+.box-slider {
+  position: relative;
+  &__box-btn {
+    --horizontal-alignment: flex-end;
+    --vertical-alignment: stretch;
+    @include ab.breakpoint(lg) {
+      position: absolute;
+      top: -8rem;
+      right: 0;
+    }
+
+    .btn {
+      display: flex;
+      padding: var(--space-2xs);
+      @include ab.breakpoint(lg) {
+        padding: var(--space-s);
+      }
+    }
+  }
+}
+
+.slider {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-s);
+  & > * {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  & > * {
+    @include ab.breakpoint(md) {
+      width: calc(50% - var(--space-s));
+      flex: 0 0 auto;
+    }
+  }
+  & > * {
+    @include ab.breakpoint(lg) {
+      width: calc(33.34% - var(--space-s));
+      flex: 0 0 auto;
+    }
+  }
+
+  &__card {
+    border-radius: 12px;
+  }
+}

@@ -1,0 +1,51 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description = "Boldo Page", image } = Astro.props;
+import "../sass/main.scss";
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff">
+    <link rel="manifest" href="/site.webmanifest"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="Landing Page" content="landing" />
+    <meta
+      property="og:image"
+      content={image}
+      <link
+      href="https://fonts.googleapis.com/css2?family=Manrope&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/a11y-slider@0.4.22/dist/a11y-slider.css"
+    />
+    <link rel="stylesheet" href="/prism-xonokai.css" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <script>
+      import AOS from "aos";
+      import "aos/dist/aos.css";
+      AOS.init({
+        duration: 1000,
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+---
+interface Props {
+  target?: string;
+  dataBg?: string;
+  dataSmall?: string;
+  ariaLabel?: string;
+  role?:string
+}
+const { target, dataBg, dataSmall,ariaLabel,role } = Astro.props;
+---
+
+<button
+  class="btn py-space-2xs px-space-l size--1"
+  data-small={dataSmall}
+  data-bg={dataBg} aria-label={ariaLabel} role={role}>{target}</button
+>

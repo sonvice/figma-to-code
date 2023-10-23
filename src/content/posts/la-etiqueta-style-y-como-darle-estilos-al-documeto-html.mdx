@@ -1,0 +1,54 @@
+---
+author: monica-geller
+categories: Category
+tags: [diseño, desarrollo]
+date: 10/17/2023
+featured: false
+image: ./images/img-blog4.png
+avatar: ./images/monica-geller.png
+title: La etiqueta <style> y como darle estilos al documeto HTML
+---
+
+import { Prism } from "@astrojs/prism";
+
+## El Elemento `<style>`
+
+El elemento `<style>` es una forma de incluir una hoja de estilos y aparece en el propio documento:
+
+<Prism lang="markup" code={`<style>...</style>`} />
+
+Los estilos entre las etiquetas de apertura y cierre de `<style>` se denominan hoja de estilos del documento o hoja de estilos incrustada (ya que este tipo de hoja de estilos se incrusta en el documento). Contiene estilos que se aplican al documento, pero también puede contener varios enlaces a hojas de estilos externas a través de la directiva `@import`, que se discute en la siguiente sección.
+
+Puede asignar al elemento `<style>` un atributo de media, que funciona de la misma manera que en las hojas de estilos vinculadas. Esto, por ejemplo, restringirá que las reglas de una hoja de estilos incrustada se apliquen solo en los medios de impresión:
+
+<Prism lang="markup" code={`<style media="print">...</style>`} />
+
+También puede etiquetar una hoja de estilos incrustada con un elemento `<title>`, de la misma manera y por las mismas razones que se discuten en la sección anterior sobre hojas de estilos alternativas.
+
+Al igual que el elemento `<link>`, el elemento `<style>` puede utilizar el atributo type. En el caso de un documento CSS, el valor correcto es "text/css". El atributo type es opcional en HTML siempre que cargue CSS, ya que el valor predeterminado para el atributo type en el elemento `<style>` es text/css. Solo sería necesario declarar explícitamente un valor de tipo si estuviera utilizando algún otro lenguaje de estilo, quizás en un futuro donde se admita tal cosa. Sin embargo, el atributo sigue siendo completamente opcional por el momento.
+
+## La Directiva `@import`
+
+Ahora discutiremos lo que se encuentra dentro de la etiqueta `<style>`. En primer lugar, tenemos algo muy similar a `<link>`, la directiva `@import`:
+
+<Prism lang="css" code={`@import url(sheet2.css);`} />
+
+Al igual que `<link>`, `@import` se puede utilizar para indicar al navegador web que cargue una hoja de estilos externa y utilice sus estilos en la representación del documento HTML. La única diferencia importante radica en la sintaxis y la ubicación del comando. Como puede ver, `@import` se encuentra dentro del elemento `<style>`. Debe colocarse primero, antes de las demás reglas CSS, o de lo contrario no funcionará en absoluto. Considere este ejemplo:
+
+<Prism
+  lang="css"
+  code={`<style>
+@import url(styles.css); /* @import va primero */
+h1 {color: gray;}
+</style>
+`}
+/>
+
+Al igual que `<link>`, un documento puede tener más de una declaración` @import`. Sin embargo, a diferencia de `<link>`, las hojas de estilos de cada directiva` @import` se cargarán y usarán; no hay forma de designar hojas de estilos alternativas con` @import`. Entonces, dado el siguiente marcado:
+
+<Prism
+  lang="css"
+  code={`@import url(sheet2.css);
+@import url(blueworld.css);
+@import url(zany.css);`}
+/>

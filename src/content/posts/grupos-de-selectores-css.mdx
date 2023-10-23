@@ -1,0 +1,48 @@
+---
+author: rachel-green
+categories: Category
+tags: [diseño, desarrollo]
+date: 10/18/2023
+featured: false
+image: ./images/rachel.png
+avatar: ./images/racheel-green.png
+title: Grupos de selectores css
+---
+
+import { Prism } from "@astrojs/prism";
+
+Hasta ahora, has visto técnicas bastante simples para aplicar un solo estilo a un solo selector. Pero, ¿qué sucede si deseas que el mismo estilo se aplique a varios elementos? El agrupamiento permite a un autor compactar drásticamente ciertos tipos de asignaciones de estilo, lo que da como resultado una hoja de estilos más corta.
+
+## Agrupación de Selectores
+
+Supongamos que deseas que tanto los elementos `<h2>` como los párrafos tengan texto gris. La forma más sencilla de lograrlo es mediante la siguiente declaración:
+
+<Prism
+  lang="css"
+  code={`h2, p {color: gray;}
+`}
+/>
+
+Al colocar los selectores `h2` y `p` al principio de la regla, antes de la llave de apertura, y separarlos con una coma, has definido una regla que indica que el estilo dentro de las llaves (color: gray;) se aplica a los elementos referenciados por ambos selectores. La coma le indica al navegador que dos selectores diferentes están involucrados en la regla.
+
+Omitir la coma le daría a la regla un significado completamente diferente, lo que exploraremos en la sección "[Definición de Selectores Descendientes](/blog/definicion-de-selectores-descendientes)"
+
+Estas alternativas producen exactamente el mismo resultado, pero una es mucho más fácil de escribir:
+
+<Prism
+  lang="css"
+  code={`h1 {color: purple;}
+h2 {color: purple;}
+h3 {color: purple;}
+h4 {color: purple;}
+h5 {color: purple;}
+h6 {color: purple;}
+`}
+/>
+<Prism
+  lang="css"
+  code={`h1, h2, h3, h4, h5, h6 {color: purple;}
+`}
+/>
+
+La segunda alternativa, con un selector agrupado, también es mucho más fácil de mantener con el tiempo.
