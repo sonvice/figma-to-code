@@ -21,6 +21,9 @@
     --vertical-alignment: flex-start;
     --gutter: var(--space-xl);
     margin-left: -0.5rem;
+    @include ab.breakpoint-down(md) {
+      flex-direction: column;
+    }
   }
   &__block-list > li {
     flex-grow: 1;

@@ -1,24 +1,26 @@
 ---
 import { nav } from "../constant";
 import ButtonSmall from "./ButtonSmall.astro";
-interface Props{
-class?:string;
-logoNav?:string
-width?:string
-height?:string
-ariaLabel:string
+import { Menu } from "astro-feather-icons";
+interface Props {
+  class?: string;
+  logoNav?: string;
+  width?: number;
+  height?: number;
+  ariaLabel?: string;
+  bg?: string;
 }
 
-const { class: className,logoNav, width, height,ariaLabel } = Astro.props;
+const { class: className, logoNav, width, height, ariaLabel, bg } = Astro.props;
 ---
 
-<header role="banner">
-  <nav class="nav pt-space-xl" aria-label={ariaLabel}>
-    <a href="/"
-      >
-      <img src={logoNav} width={width} height={height} alt="Logo principal" /></a
-    >
-    <ul role="list" class=`nav__list ${className}`>
+<header role="banner" class="banner d-flex">
+  <a href="/">
+    <img src={logoNav} width={width} height={height} alt="Logo principal" />
+  </a>
+
+  <nav class:list={["nav", bg]} aria-label={ariaLabel}>
+    <ul role="list" class=`nav__list d-flex ${className}`>
       {
         nav.map((item) => {
           return (
@@ -31,20 +33,25 @@ const { class: className,logoNav, width, height,ariaLabel } = Astro.props;
         })
       }
       <li>
-
         <ButtonSmall
           target="Log in"
           dataSmall="blue-white"
           ariaLabel="Log in"
-         
           }
         />
       </li>
     </ul>
   </nav>
+  <Menu size="32" class="relative" id="burguer" />
 </header>
 
 <script>
+  const burguer = document.getElementById("burguer");
+  const nav = document.querySelector(".nav");
+  burguer.addEventListener("click", () => {
+    nav.classList.toggle("show");
+  });
+
   const itemNav = document.querySelectorAll(".nav__list li a");
   itemNav.forEach((link) => {
     if (link.href === window.location.href) {

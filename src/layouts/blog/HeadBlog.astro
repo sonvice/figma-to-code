@@ -22,8 +22,8 @@ const author = await getEntry("author", ultimoPost.data.author);
 ---
 
 <section>
-  <div class="container">
-    <Nav class="text-secondary" logoNav={logoBlack.src} />
+  <div class="head-blog container">
+    <Nav logoNav={logoBlack.src} />
     <HeroTitle title={title} class="text-secondary" smallText="Blog" />
     <HeroBlog ultimoPost={ultimoPost} author={author} />
   </div>

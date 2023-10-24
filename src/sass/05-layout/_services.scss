@@ -6,10 +6,9 @@
 }
 
 .services {
-  --min-max: 8.75rem;
   gap: var(--space-l);
   @include ab.breakpoint(sm) {
-    --min-max: 10.75rem;
+    --min-max: 14.75rem;
   }
   @include ab.breakpoint(xl) {
     padding-inline: 3rem;
@@ -70,6 +69,16 @@
     justify-items: end;
   }
 }
+
+.connect1 {
+  & .btn {
+    width: 100%;
+    @include ab.breakpoint(lg) {
+      width: max-content;
+    }
+  }
+}
+
 .box-btn {
   @include ab.breakpoint(lg) {
     text-align: left;
@@ -86,6 +95,15 @@
   margin: auto;
   @include ab.breakpoint(lg) {
     margin: initial;
+  }
+}
+
+.connect2 {
+  & p {
+    font-size: var(--size--1);
+    @include ab.breakpoint(sm) {
+      font-size: var(--base);
+    }
   }
 }
 

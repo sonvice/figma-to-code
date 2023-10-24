@@ -7,7 +7,6 @@
   gap: var(--space-2xl);
   align-items: center;
   padding-top: var(--space-xl);
-  margin-top: var(--space-3xl);
   position: relative;
   @include ab.breakpoint(md) {
     margin-top: var(--space-2xl);
@@ -18,15 +17,17 @@
   }
 
   &__box-title {
-    order: 1;
     @include ab.breakpoint(md) {
       order: 0;
     }
   }
+  & h1 {
+    text-wrap: initial;
+    max-width: 30ch;
+  }
 
   & h1,
   p {
-    margin-inline: auto;
     @include ab.breakpoint(md) {
       margin-inline: 0;
     }
@@ -37,6 +38,7 @@
     @include ab.breakpoint-down(lg) {
       button {
         padding-inline: var(--space-l);
+        flex-basis: 100%;
       }
     }
     @include ab.breakpoint(md) {
